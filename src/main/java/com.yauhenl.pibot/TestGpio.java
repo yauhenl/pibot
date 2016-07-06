@@ -1,50 +1,50 @@
 package com.yauhenl.pibot;
 
 import com.pi4j.io.gpio.*;
+import com.pi4j.wiringpi.Shift;
+
+import static com.pi4j.io.gpio.PinState.LOW;
+import static com.pi4j.io.gpio.RaspiPin.*;
 
 public class TestGpio {
 
     public static void main(String[] args) throws InterruptedException {
-
-        System.out.println("<--Pi4J--> GPIO Control Example ... started.");
-
-        // create gpio controller
         final GpioController gpio = GpioFactory.getInstance();
 
-        // provision gpio pin #01 as an output pin and turn on
-        final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "MyLED", PinState.HIGH);
+        final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
+        final GpioPinDigitalOutput dc2 = gpio.provisionDigitalOutputPin(GPIO_22, LOW);
+        final GpioPinDigitalOutput dc3 = gpio.provisionDigitalOutputPin(GPIO_23, LOW);
+        final GpioPinDigitalOutput dc4 = gpio.provisionDigitalOutputPin(GPIO_24, LOW);
 
-        // set shutdown state for this pin
-        pin.setShutdownOptions(true, PinState.LOW);
+        final GpioPinDigitalOutput clk = gpio.provisionDigitalOutputPin(GPIO_26, LOW);
+        final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
+        final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
-        System.out.println("--> GPIO state should be: ON");
+        dc1.setShutdownOptions(true, LOW);
+        dc2.setShutdownOptions(true, LOW);
+        dc3.setShutdownOptions(true, LOW);
+        dc4.setShutdownOptions(true, LOW);
 
-        Thread.sleep(5000);
+        System.out.println("DC1");
+        dc1.high();
+        Thread.sleep(1000);
 
-        // turn off gpio pin #01
-        pin.low();
-        System.out.println("--> GPIO state should be: OFF");
+        System.out.println("write 4");
+        latch.low();
+        writeShift((byte) 4);
+        latch.high();
+        Thread.sleep(1000);
 
-        Thread.sleep(5000);
+        System.out.println("write 4");
+        latch.low();
+        writeShift((byte) 8);
+        latch.high();
+        Thread.sleep(1000);
 
-        // toggle the current state of gpio pin #01 (should turn on)
-        pin.toggle();
-        System.out.println("--> GPIO state should be: ON");
-
-        Thread.sleep(5000);
-
-        // toggle the current state of gpio pin #01  (should turn off)
-        pin.toggle();
-        System.out.println("--> GPIO state should be: OFF");
-
-        Thread.sleep(5000);
-
-        // turn on gpio pin #01 for 1 second and then off
-        System.out.println("--> GPIO state should be: ON for only 1 second");
-        pin.pulse(1000, true); // set second argument to 'true' use a blocking call
-
-        // stop all GPIO activity/threads by shutting down the GPIO controller
-        // (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
         gpio.shutdown();
+    }
+
+    private static void writeShift(byte value) {
+        Shift.shiftOut((byte) GPIO_27.getAddress(), (byte) GPIO_26.getAddress(), (byte) Shift.LSBFIRST, value);
     }
 }
