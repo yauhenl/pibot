@@ -26,24 +26,6 @@ public class BotControl {
     private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
     private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
-
-    private static void main(String[] args) throws InterruptedException {
-        allHigh();
-
-        forward();
-        Thread.sleep(2000);
-        backward();
-        Thread.sleep(2000);
-        toLeft();
-        Thread.sleep(2000);
-        toRight();
-        Thread.sleep(2000);
-
-        stop();
-        allLow();
-        gpio.shutdown();
-    }
-
     public static void forward() {
         writeShift(169);
     }
