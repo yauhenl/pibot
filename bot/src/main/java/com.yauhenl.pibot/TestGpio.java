@@ -26,7 +26,7 @@ public class TestGpio {
     dc3 1, 4
     dc4 128, 2
      */
-    public static void main(String[] args) throws InterruptedException {
+    private static void main(String[] args) throws InterruptedException {
         allHigh();
 
         forward();
