@@ -42,7 +42,7 @@ public class BotControl {
         writeShift(46);
     }
 
-    public static void stop() {
+    public static void dcStop() {
         writeShift(0);
     }
 
