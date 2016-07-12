@@ -9,13 +9,6 @@ apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: "org.hidetake.ssh"
 
-//plugins {
-//    id 'java'
-//    id 'spring-boot'
-//    id "org.hidetake.ssh" version "2.4.0"
-//}
-
-
 sourceCompatibility = 1.8
 
 remotes {
