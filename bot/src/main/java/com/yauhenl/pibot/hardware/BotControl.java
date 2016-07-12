@@ -26,18 +26,22 @@ public class BotControl {
     private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
     private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
+    //32+8+1+128
     public static void forward() {
         writeShift(169);
     }
 
+    //16+64+4+2
     public static void backward() {
         writeShift(86);
     }
 
+    //16+64+1+128
     public static void toRight() {
         writeShift(209);
     }
 
+    //32+8+4+2
     public static void toLeft() {
         writeShift(46);
     }
