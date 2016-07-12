@@ -1,4 +1,4 @@
-package com.yauhenl.pibot;
+package com.yauhenl.pibot.hardware;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -8,7 +8,13 @@ import com.pi4j.wiringpi.Shift;
 import static com.pi4j.io.gpio.PinState.LOW;
 import static com.pi4j.io.gpio.RaspiPin.*;
 
-public class TestGpio {
+/*
+    dc1 32, 16
+    dc2 8, 64
+    dc3 1, 4
+    dc4 128, 2
+*/
+public class BotControl {
     private static final GpioController gpio = GpioFactory.getInstance();
 
     private static final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
@@ -20,12 +26,7 @@ public class TestGpio {
     private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
     private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
-    /*
-    dc1 32, 16
-    dc2 8, 64
-    dc3 1, 4
-    dc4 128, 2
-     */
+
     private static void main(String[] args) throws InterruptedException {
         allHigh();
 
@@ -43,34 +44,34 @@ public class TestGpio {
         gpio.shutdown();
     }
 
-    private static void forward() {
+    public static void forward() {
         writeShift(169);
     }
 
-    private static void backward() {
+    public static void backward() {
         writeShift(86);
     }
 
-    private static void toRight() {
+    public static void toRight() {
         writeShift(209);
     }
 
-    private static void toLeft() {
+    public static void toLeft() {
         writeShift(46);
     }
 
-    private static void stop() {
+    public static void stop() {
         writeShift(0);
     }
 
-    private static void allHigh() {
+    public static void allHigh() {
         dc1.high();
         dc2.high();
         dc3.high();
         dc4.high();
     }
 
-    private static void allLow() {
+    public static void allLow() {
         dc1.low();
         dc2.low();
         dc3.low();

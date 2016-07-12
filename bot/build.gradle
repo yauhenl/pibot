@@ -34,7 +34,7 @@ dependencies {
 task deploy << {
     ssh.run {
         session(remotes.pi) {
-            put from: 'build/libs/bot-1.0.jar', into: 'pibot.jar'
+            put from: 'bot/build/libs/bot-1.0.jar', into: 'pibot.jar'
         }
     }
 }
