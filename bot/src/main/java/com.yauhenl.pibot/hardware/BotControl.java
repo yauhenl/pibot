@@ -62,7 +62,7 @@ public class BotControl {
 
     private static void writeShift(int value) {
         latch.low();
-        Shift.shiftOut((byte) GPIO_27.getAddress(), (byte) GPIO_26.getAddress(), (byte) Shift.LSBFIRST, (byte) value);
+        Shift.shiftOut((byte) clk.getPin().getAddress(), (byte) ser.getPin().getAddress(), (byte) Shift.LSBFIRST, (byte) value);
         latch.high();
     }
 }
