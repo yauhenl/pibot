@@ -14,35 +14,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        var host = 'http://192.168.1.7';
   		$(document).keydown(function(e) {
 		    switch(e.which) {
 		        case 37: // left
-		        $.get(host + "/move/left");
+		        $.get("/move/left");
 		        break;
 
 		        case 38: // up
-		        $.get(host + "/move/forward");
+		        $.get("/move/forward");
 		        break;
 
 		        case 39: // right
-		        $.get(host + "/move/right");
+		        $.get("/move/right");
 		        break;
 
 		        case 40: // down
-		        $.get(host + "/move/backward");
+		        $.get("/move/backward");
 		        break;
 
 		        case 32: // down
-                $.get(host + "/move/stop");
+                $.get("/move/stop");
                 break;
 
 		        case 90: // down
-		        $.get(host + "/switch/on");
+		        $.get("/switch/on");
 		        break;
 
 		        case 88: // down
-		        $.get(host + "/switch/off");
+		        $.get("/switch/off");
 		        break;
 
 		        default: return; // exit this handler for other keys
