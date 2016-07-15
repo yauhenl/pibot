@@ -17,13 +17,17 @@ public class BotController {
         stop
     }
 
+    private enum State {
+        on, off
+    }
+
     @RequestMapping(value = "/switch/{state}", method = GET)
     public void shutdown(@PathVariable String state) {
-        switch (state) {
-            case "ON":
+        switch (State.valueOf(state)) {
+            case on:
                 allHigh();
                 break;
-            case "OFF":
+            case off:
                 allLow();
                 break;
         }
