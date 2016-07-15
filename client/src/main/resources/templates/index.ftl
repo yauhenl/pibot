@@ -14,59 +14,41 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        var host = 'http://192.168.1.7';
   		$(document).keydown(function(e) {
-  		    alert(e.which);
 		    switch(e.which) {
 		        case 37: // left
-		        $.get("http://192.168.1.7/move/left");
+		        $.get(host + "/move/left");
 		        break;
 
 		        case 38: // up
-		        $.get("http://192.168.1.7/move/forward");
+		        $.get(host + "/move/forward");
 		        break;
 
 		        case 39: // right
-		        $.get("http://192.168.1.7/move/right");
+		        $.get(host + "/move/right");
 		        break;
 
 		        case 40: // down
-		        $.get("http://192.168.1.7/move/backward");
+		        $.get(host + "/move/backward");
 		        break;
 
+		        case 32: // down
+                $.get(host + "/move/stop");
+                break;
+
 		        case 90: // down
-		        $.get("http://192.168.1.7/switch/on");
+		        $.get(host + "/switch/on");
 		        break;
 
 		        case 88: // down
-		        $.get("http://192.168.1.7/switch/off");
+		        $.get(host + "/switch/off");
 		        break;
 
 		        default: return; // exit this handler for other keys
 		    }
 		    e.preventDefault(); // prevent the default action (scroll / move caret)
 		});
-		$(document).keyup(function(e) {
-                switch(e.which) {
-                    case 37: // left
-                    $.get("http://192.168.1.7/move/stop");
-                    break;
-
-                    case 38: // up
-                    $.get("http://192.168.1.7/move/stop");
-                    break;
-
-                    case 39: // right
-                    $.get("http://192.168.1.7/move/stop");
-                    break;
-
-                    case 40: // down
-                    $.get("http://192.168.1.7/move/stop");
-                    break;
-
-                    default: return; // exit this handler for other keys
-                }
-                e.preventDefault(); // prevent the default action (scroll / move caret)
-            });
   	</script> 
   </body>
 </html>
