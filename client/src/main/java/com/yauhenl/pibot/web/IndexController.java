@@ -3,8 +3,8 @@ package com.yauhenl.pibot.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sun.net.www.protocol.http.HttpURLConnection;
 
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;

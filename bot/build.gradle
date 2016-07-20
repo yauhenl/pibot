@@ -5,11 +5,8 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
 apply plugin: 'spring-boot'
 apply plugin: "org.hidetake.ssh"
-
-sourceCompatibility = 1.8
 
 remotes {
     pi {
@@ -22,6 +19,7 @@ remotes {
 dependencies {
     compile 'com.pi4j:pi4j-core:1.0'
     compile 'org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE'
+    compile project(':utils')
 }
 
 task deploy << {
