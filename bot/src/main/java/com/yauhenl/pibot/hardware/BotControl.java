@@ -6,6 +6,9 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.wiringpi.Shift;
 import com.yauhenl.pibot.Direction;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.pi4j.io.gpio.PinState.LOW;
 import static com.pi4j.io.gpio.RaspiPin.*;
 
@@ -22,6 +25,8 @@ public class BotControl {
     private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
     private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
+    private static final List<GpioPinDigitalOutput> motors = Arrays.asList(dc1, dc2, dc3, dc4);
+
     private static Direction currentDirection;
 
     public static void doMove(Direction direction) {
@@ -32,17 +37,11 @@ public class BotControl {
     }
 
     public static void allHigh() {
-        dc1.high();
-        dc2.high();
-        dc3.high();
-        dc4.high();
+        motors.forEach(GpioPinDigitalOutput::high);
     }
 
     public static void allLow() {
-        dc1.low();
-        dc2.low();
-        dc3.low();
-        dc4.low();
+        motors.forEach(GpioPinDigitalOutput::low);
     }
 
     private static void writeShift(int value) {
