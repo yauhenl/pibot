@@ -11,7 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class BotController {
-    @RequestMapping(value = "/switch/{state}", method = GET)
+    @RequestMapping(value = "/switch/{power}", method = GET)
     public void shutdown(@PathVariable String power) {
         switch (Power.valueOf(power)) {
             case on:
