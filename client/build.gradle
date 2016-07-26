@@ -1,13 +1,16 @@
 buildscript {
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
     }
 }
 
+apply plugin: 'kotlin'
 apply plugin: 'spring-boot'
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-freemarker:1.3.6.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-freemarker:${springBootVersion}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
     compile project(':utils')
 }

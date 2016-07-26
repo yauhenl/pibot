@@ -5,6 +5,11 @@ allprojects {
 
 subprojects {
     buildscript {
+        ext {
+            springBootVersion = '1.3.6.RELEASE'
+            kotlinVersion = '1.0.2'
+            sshPluginVersion = '1.0.2'
+        }
         repositories {
             mavenCentral()
             maven {
@@ -12,9 +17,6 @@ subprojects {
             }
         }
     }
-
-    apply plugin: 'java'
-    sourceCompatibility = 1.8
 
     repositories {
         mavenCentral()

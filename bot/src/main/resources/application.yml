@@ -1,0 +1,3 @@
+server:
+  tomcat:
+    threads: 2
