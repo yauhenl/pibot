@@ -36,8 +36,7 @@ class IndexController {
 
     private fun request(url: String) {
         try {
-            val obj = URL(url)
-            val con = obj.openConnection() as HttpURLConnection
+            val con = URL(url).openConnection() as HttpURLConnection
             con.responseCode
             con.disconnect()
         } catch (ignore: Exception) {
