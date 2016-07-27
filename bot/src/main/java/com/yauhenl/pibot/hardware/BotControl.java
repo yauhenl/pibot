@@ -3,6 +3,7 @@ package com.yauhenl.pibot.hardware;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.wiringpi.GpioUtil;
 import com.pi4j.wiringpi.Shift;
 import com.yauhenl.pibot.Direction;
 
@@ -14,7 +15,7 @@ import static com.pi4j.io.gpio.RaspiPin.*;
 
 
 public class BotControl {
-    private static final GpioController gpio = GpioFactory.getInstance();
+    private static final GpioController gpio = getGpioController();
 
     private static final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
     private static final GpioPinDigitalOutput dc2 = gpio.provisionDigitalOutputPin(GPIO_22, LOW);
@@ -48,5 +49,10 @@ public class BotControl {
         latch.low();
         Shift.shiftOut((byte) ser.getPin().getAddress(), (byte) clk.getPin().getAddress(), (byte) Shift.LSBFIRST, (byte) value);
         latch.high();
+    }
+
+    private static GpioController getGpioController() {
+        GpioUtil.enableNonPrivilegedAccess();
+        return GpioFactory.getInstance();
     }
 }

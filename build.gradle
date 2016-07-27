@@ -5,6 +5,11 @@ allprojects {
 
 subprojects {
     buildscript {
+        ext {
+            springBootVersion = '1.3.6.RELEASE'
+            sshPluginVersion = '2.4.0'
+            pi4jVersion = '1.1-SNAPSHOT'
+        }
         repositories {
             mavenCentral()
             maven {
@@ -18,6 +23,9 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/groups/public/"
+        }
     }
 }
 
