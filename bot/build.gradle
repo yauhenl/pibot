@@ -1,14 +1,12 @@
 buildscript {
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-        classpath "org.hidetake:gradle-ssh-plugin:${sshPluginVersion}"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE"
+        classpath "org.hidetake:gradle-ssh-plugin:2.4.0"
     }
 }
 
-apply plugin: 'kotlin'
 apply plugin: 'spring-boot'
-apply plugin: 'org.hidetake.ssh'
+apply plugin: "org.hidetake.ssh"
 
 remotes {
     pi {
@@ -20,8 +18,7 @@ remotes {
 
 dependencies {
     compile 'com.pi4j:pi4j-core:1.0'
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-web:1.3.6.RELEASE'
     compile project(':utils')
 }
 
