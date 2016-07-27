@@ -10,7 +10,6 @@ import com.yauhenl.pibot.Direction;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.pi4j.io.gpio.PinState.LOW;
 import static com.pi4j.io.gpio.RaspiPin.*;
 
 
