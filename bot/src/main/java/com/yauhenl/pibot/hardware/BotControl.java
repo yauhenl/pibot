@@ -17,14 +17,14 @@ import static com.pi4j.io.gpio.RaspiPin.*;
 public class BotControl {
     private static final GpioController gpio = getGpioController();
 
-    private static final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
-    private static final GpioPinDigitalOutput dc2 = gpio.provisionDigitalOutputPin(GPIO_22, LOW);
-    private static final GpioPinDigitalOutput dc3 = gpio.provisionDigitalOutputPin(GPIO_24, LOW);
-    private static final GpioPinDigitalOutput dc4 = gpio.provisionDigitalOutputPin(GPIO_23, LOW);
+    private static final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25);
+    private static final GpioPinDigitalOutput dc2 = gpio.provisionDigitalOutputPin(GPIO_22);
+    private static final GpioPinDigitalOutput dc3 = gpio.provisionDigitalOutputPin(GPIO_24);
+    private static final GpioPinDigitalOutput dc4 = gpio.provisionDigitalOutputPin(GPIO_23);
 
-    private static final GpioPinDigitalOutput clk = gpio.provisionDigitalOutputPin(GPIO_26, LOW);
-    private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
-    private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
+    private static final GpioPinDigitalOutput clk = gpio.provisionDigitalOutputPin(GPIO_26);
+    private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27);
+    private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28);
 
     private static final List<GpioPinDigitalOutput> motors = Arrays.asList(dc1, dc2, dc3, dc4);
 
