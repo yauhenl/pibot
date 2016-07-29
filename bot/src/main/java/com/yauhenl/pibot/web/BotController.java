@@ -25,6 +25,6 @@ public class BotController {
 
     @RequestMapping(value = "/move/{direction}", method = GET)
     public void move(@PathVariable String direction) {
-        doMove(Direction.valueOf(direction));
+        doMove(Direction.valueOf(direction));//
     }
 }
