@@ -1,30 +1,25 @@
 package com.yauhenl.pibot.web;
 
-import com.yauhenl.pibot.Direction;
-import com.yauhenl.pibot.Power;
+import com.yauhenl.pibot.control.ActionService;
+import com.yauhenl.pibot.control.action.ActionType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.yauhenl.pibot.hardware.BotControl.*;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class BotController {
-    @RequestMapping(value = "/switch/{power}", method = GET)
-    public void shutdown(@PathVariable String power) {
-        switch (Power.valueOf(power)) {
-            case on:
-                allHigh();
-                break;
-            case off:
-                allLow();
-                break;
-        }
+
+    @Autowired
+    private ActionService actionService;
+
+
+    @RequestMapping(value = "/action/{actionId}", method = RequestMethod.GET)
+    public void performAction(@PathVariable String actionId) {
+        ActionType action = ActionType.valueOf(actionId);
+        actionService.performAction(action);
     }
 
-    @RequestMapping(value = "/move/{direction}", method = GET)
-    public void move(@PathVariable String direction) {
-        doMove(Direction.valueOf(direction));
-    }
 }
