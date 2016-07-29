@@ -1,2 +1,6 @@
 
 /.idea/
+.gradle/
+bot/build/
+client/build/
+utils/build/
