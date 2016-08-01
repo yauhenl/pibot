@@ -17,31 +17,31 @@
   		$(document).keydown(function(e) {
 		    switch(e.which) {
 		        case 37: // left
-		        $.get("/move/left");
+		        $.get("/action/MOVE_LEFT");
 		        break;
 
 		        case 38: // up
-		        $.get("/move/forward");
+		        $.get("/action/MOVE_FORWARD");
 		        break;
 
 		        case 39: // right
-		        $.get("/move/right");
+		        $.get("/action/MOVE_RIGHT");
 		        break;
 
 		        case 40: // down
-		        $.get("/move/backward");
+		        $.get("/action/MOVE_BACKWARD");
 		        break;
 
 		        case 32: // down
-                $.get("/move/stop");
+                $.get("/action/MOVE_STOP");
                 break;
 
 		        case 90: // down
-		        $.get("/switch/on");
+		        $.get("/action/ALL_MOTORS_POWER_ON");
 		        break;
 
 		        case 88: // down
-		        $.get("/switch/off");
+		        $.get("/action/ALL_MOTORS_POWER_OFF");
 		        break;
 
 		        default: return; // exit this handler for other keys

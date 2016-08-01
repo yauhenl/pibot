@@ -22,16 +22,10 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/switch/{state}", method = GET)
+    @RequestMapping(value = "/action/{name}", method = GET)
     @ResponseStatus(HttpStatus.OK)
-    public void state(@PathVariable String state) {
-        request(host + "/switch/" + state);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/move/{direction}", method = GET)
-    public void move(@PathVariable String direction) {
-        request(host + "/move/" + direction);
+    public void state(@PathVariable String actionName) {
+        request(host + "/action/" + actionName);
     }
 
     private void request(String url) {
