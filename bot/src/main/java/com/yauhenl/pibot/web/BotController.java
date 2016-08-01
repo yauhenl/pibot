@@ -14,10 +14,8 @@ public class BotController {
     @Autowired
     private ActionService actionService;
 
-
-    @RequestMapping(value = "/action/{actionId}/${params}", method = RequestMethod.GET)
-    public void performAction(@PathVariable String actionId, @PathVariable String params) {
-        ActionType action = ActionType.valueOf(actionId);
-        actionService.performAction(action, params.split(","));
+    @RequestMapping(value = "/action/{actionId}", method = RequestMethod.GET)
+    public void performAction(@PathVariable String actionId) {
+        actionService.performAction(ActionType.valueOf(actionId));
     }
 }

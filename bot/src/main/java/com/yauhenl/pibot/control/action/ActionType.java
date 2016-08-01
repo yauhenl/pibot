@@ -10,7 +10,6 @@ public enum ActionType {
 
     ALL_MOTORS_POWER_ON(allMotorsPowerOnAction),
     ALL_MOTORS_POWER_OFF(allMotorsPowerOffAction),
-    ALL_MOTORS_SET_SPEED(allMotorsSetSpeedAction),
 
     // Movement
 

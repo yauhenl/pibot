@@ -22,9 +22,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/action/{name}", method = GET)
+    @RequestMapping(value = "/action/{actionName}", method = GET)
     @ResponseStatus(HttpStatus.OK)
-    public void state(@PathVariable String actionName) {
+    public void action(@PathVariable String actionName) {
         request(host + "/action/" + actionName);
     }
 

@@ -1,30 +1,23 @@
 package com.yauhenl.pibot.hardware.cascade.motor;
 
-import com.pi4j.io.gpio.GpioPinPwmOutput;
+import com.pi4j.io.gpio.GpioPinDigitalOutput;
 
 /**
  * Created by Stsiapan_Shablinski on 7/29/2016.
  */
 public class Motor {
-    private static final Integer maxRange = 1024;
 
-    private GpioPinPwmOutput outputChannel;
+    private GpioPinDigitalOutput outputChannel;
 
-    public Motor(GpioPinPwmOutput outputChannel) {
+    public Motor(GpioPinDigitalOutput outputChannel) {
         this.outputChannel = outputChannel;
     }
 
-    public void setMaxSpeed() {
-        outputChannel.setPwm(maxRange);
+    public void setHighOutput() {
+        outputChannel.high();
     }
 
-    public void setMinSpeed() {
-        outputChannel.setPwm(0);
-    }
-
-    public void setSpeed(int value) {
-        if (value <=maxRange && value >= 0) {
-            outputChannel.setPwm(value);
-        }
+    public void setLowOutput() {
+        outputChannel.low();
     }
 }
