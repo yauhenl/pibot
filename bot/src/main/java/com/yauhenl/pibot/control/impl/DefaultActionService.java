@@ -1,11 +1,8 @@
 package com.yauhenl.pibot.control.impl;
 
-import com.yauhenl.pibot.control.ActionFactory;
 import com.yauhenl.pibot.control.ActionService;
-import com.yauhenl.pibot.control.action.Action;
-import com.yauhenl.pibot.control.action.ActionResult;
 import com.yauhenl.pibot.control.action.ActionType;
-import org.apache.log4j.Logger;
+import com.yauhenl.pibot.hardware.BotControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,21 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultActionService implements ActionService {
 
-    private static final Logger LOG = Logger.getLogger(DefaultActionService.class);
-
     @Autowired
-    ActionFactory actionFactory;
+    private BotControl botControl;
 
     @Override
-    public ActionResult performAction(ActionType actionType) {
-        Action action = actionFactory.getAction(actionType);
-        if (action == null) {
-            LOG.warn("Can't perform unsupported action: " + actionType);
-            return ActionResult.STATUS_FAILURE;
-        } else {
-            LOG.debug("Performing action: " + actionType);
-            return action.perform();
-        }
+    public void performAction(ActionType actionType) {
+        actionType.getAction().perform(botControl);
     }
 
 }

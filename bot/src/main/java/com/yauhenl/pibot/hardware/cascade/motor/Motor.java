@@ -22,11 +22,11 @@ public class Motor {
     }
 
     public void setHighOutput() {
-        outputChannel.high();
+        getOutputChannel().high();
     }
 
     public void setLowOutput() {
-        outputChannel.low();
+        getOutputChannel().low();
     }
 
 }

@@ -36,9 +36,9 @@ public class Shift {
     }
 
     public void writeShift(int value) {
-        latch.low();
-        com.pi4j.wiringpi.Shift.shiftOut((byte) ser.getPin().getAddress(), (byte) clk.getPin().getAddress(), (byte) com.pi4j.wiringpi.Shift.LSBFIRST, (byte) value);
-        latch.high();
+        getLatch().low();
+        com.pi4j.wiringpi.Shift.shiftOut((byte) getSer().getPin().getAddress(), (byte) getClk().getPin().getAddress(), (byte) com.pi4j.wiringpi.Shift.LSBFIRST, (byte) value);
+        getLatch().high();
     }
 
 }

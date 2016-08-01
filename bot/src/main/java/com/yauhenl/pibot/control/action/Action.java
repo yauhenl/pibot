@@ -1,10 +1,12 @@
 package com.yauhenl.pibot.control.action;
 
+import com.yauhenl.pibot.hardware.BotControl;
+
 /**
  * Created by Stsiapan_Shablinski on 7/28/2016.
  */
 public interface Action {
 
-    ActionResult perform();
+    void perform(BotControl botControl);
 
 }

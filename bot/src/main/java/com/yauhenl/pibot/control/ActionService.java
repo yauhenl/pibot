@@ -1,6 +1,5 @@
 package com.yauhenl.pibot.control;
 
-import com.yauhenl.pibot.control.action.ActionResult;
 import com.yauhenl.pibot.control.action.ActionType;
 
 /**
@@ -8,6 +7,6 @@ import com.yauhenl.pibot.control.action.ActionType;
  */
 public interface ActionService {
 
-    ActionResult performAction(ActionType actionType);
+    void performAction(ActionType actionType);
 
 }
