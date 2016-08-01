@@ -24,10 +24,9 @@ public class BotCascade {
         motors.put(MotorKey.DC3, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_24)));
         motors.put(MotorKey.DC4, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_23)));
 
-        shift = new Shift();
-        shift.setClk(controller.provisionDigitalOutputPin(RaspiPin.GPIO_26));
-        shift.setLatch(controller.provisionDigitalOutputPin(RaspiPin.GPIO_28));
-        shift.setSer(controller.provisionDigitalOutputPin(RaspiPin.GPIO_27));
+        shift = new Shift(controller.provisionDigitalOutputPin(RaspiPin.GPIO_26),
+                controller.provisionDigitalOutputPin(RaspiPin.GPIO_27),
+                controller.provisionDigitalOutputPin(RaspiPin.GPIO_28));
     }
 
     public Map<MotorKey, Motor> getMotors() {

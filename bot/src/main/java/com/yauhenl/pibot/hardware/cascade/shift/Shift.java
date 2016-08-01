@@ -11,34 +11,15 @@ public class Shift {
     private GpioPinDigitalOutput ser;
     private GpioPinDigitalOutput latch;
 
-    public GpioPinDigitalOutput getClk() {
-        return clk;
-    }
-
-    public void setClk(GpioPinDigitalOutput clk) {
+    public Shift(GpioPinDigitalOutput clk, GpioPinDigitalOutput ser, GpioPinDigitalOutput latch) {
         this.clk = clk;
-    }
-
-    public GpioPinDigitalOutput getSer() {
-        return ser;
-    }
-
-    public void setSer(GpioPinDigitalOutput ser) {
         this.ser = ser;
-    }
-
-    public GpioPinDigitalOutput getLatch() {
-        return latch;
-    }
-
-    public void setLatch(GpioPinDigitalOutput latch) {
         this.latch = latch;
     }
 
     public void writeShift(int value) {
-        getLatch().low();
-        com.pi4j.wiringpi.Shift.shiftOut((byte) getSer().getPin().getAddress(), (byte) getClk().getPin().getAddress(), (byte) com.pi4j.wiringpi.Shift.LSBFIRST, (byte) value);
-        getLatch().high();
+        latch.low();
+        com.pi4j.wiringpi.Shift.shiftOut((byte) ser.getPin().getAddress(), (byte) clk.getPin().getAddress(), (byte) com.pi4j.wiringpi.Shift.LSBFIRST, (byte) value);
+        latch.high();
     }
-
 }
