@@ -13,20 +13,11 @@ public class Motor {
         this.outputChannel = outputChannel;
     }
 
-    public GpioPinDigitalOutput getOutputChannel() {
-        return outputChannel;
-    }
-
-    public void setOutputChannel(GpioPinDigitalOutput outputChannel) {
-        this.outputChannel = outputChannel;
-    }
-
     public void setHighOutput() {
-        getOutputChannel().high();
+        outputChannel.high();
     }
 
     public void setLowOutput() {
-        getOutputChannel().low();
+        outputChannel.low();
     }
-
 }

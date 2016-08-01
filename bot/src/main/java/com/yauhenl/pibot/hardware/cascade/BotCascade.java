@@ -38,9 +38,7 @@ public class BotCascade {
         return shift;
     }
 
-
-    public enum MotorKey {
+    private enum MotorKey {
         DC1, DC2, DC3, DC4
     }
-
 }

@@ -1,12 +1,11 @@
 package com.yauhenl.pibot.control.action;
 
-import static com.yauhenl.pibot.control.action.impl.Actions.*;
+import static com.yauhenl.pibot.control.action.Actions.*;
 
 /**
  * Created by Stsiapan_Shablinski on 7/28/2016.
  */
 public enum ActionType {
-
     // Power
 
     ALL_MOTORS_POWER_ON(allMotorsPowerOnAction),

@@ -1,4 +1,4 @@
-package com.yauhenl.pibot.hardware;
+package com.yauhenl.pibot.service;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -27,5 +27,4 @@ public class BotControl {
         GpioUtil.enableNonPrivilegedAccess();
         return GpioFactory.getInstance();
     }
-
 }

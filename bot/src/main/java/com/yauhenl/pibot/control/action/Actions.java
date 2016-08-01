@@ -1,10 +1,7 @@
-package com.yauhenl.pibot.control.action.impl;
+package com.yauhenl.pibot.control.action;
 
-import com.yauhenl.pibot.control.action.Action;
 import com.yauhenl.pibot.hardware.cascade.motor.Motor;
-import org.springframework.stereotype.Service;
 
-@Service
 public class Actions {
     private static final int BACKWARD_SHIFT_VAL = 156;
     private static final int FORWARD_SHIFT_VAL = 99;
