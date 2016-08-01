@@ -23,5 +23,5 @@ public class Actions {
 
     public static Action allMotorsPowerOnAction = (botControl, params) -> botControl.getCascade().getMotors().values().forEach(Motor::setMaxSpeed);
 
-    public static Action allMotorsSetSpeedAction = (botControl, params) -> botControl.getCascade().getMotors().values().forEach(it -> it.setSpeed(Integer.valueOf(params[0].toString())));
+    public static Action allMotorsSetSpeedAction = (botControl, params) -> botControl.getCascade().getMotors().values().forEach(it -> it.setSpeed(Integer.valueOf(params[0])));
 }

@@ -17,7 +17,7 @@ public class ActionService {
         actionType.getAction().perform(botControl);
     }
 
-    public void performAction(ActionType actionType, Object... params) {
+    public void performAction(ActionType actionType, String... params) {
         actionType.getAction().perform(botControl, params);
     }
 }
