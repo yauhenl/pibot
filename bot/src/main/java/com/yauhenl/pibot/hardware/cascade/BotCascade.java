@@ -2,8 +2,6 @@ package com.yauhenl.pibot.hardware.cascade;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.RaspiPin;
-import com.yauhenl.pibot.hardware.cascade.motor.Motor;
-import com.yauhenl.pibot.hardware.cascade.shift.Shift;
 
 import java.util.HashMap;
 import java.util.Map;

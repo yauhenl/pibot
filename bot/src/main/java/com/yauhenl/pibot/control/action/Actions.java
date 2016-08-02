@@ -1,6 +1,6 @@
 package com.yauhenl.pibot.control.action;
 
-import com.yauhenl.pibot.hardware.cascade.motor.Motor;
+import com.yauhenl.pibot.hardware.cascade.Motor;
 
 public class Actions {
     private static final int BACKWARD_SHIFT_VAL = 156;

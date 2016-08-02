@@ -1,4 +1,4 @@
-package com.yauhenl.pibot.hardware.cascade.shift;
+package com.yauhenl.pibot.hardware.cascade;
 
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 
