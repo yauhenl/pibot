@@ -1,5 +1,7 @@
 package com.yauhenl.pibot.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,12 +16,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class IndexController {
+    private static final String INDEX_VIEW = "index";
+    private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+
     @Value("${botHost}")
     private String host;
 
     @RequestMapping(value = "/")
     public String view() {
-        return "index";
+        return INDEX_VIEW;
     }
 
     @RequestMapping(value = "/action/{actionName}", method = GET)
@@ -34,7 +39,8 @@ public class IndexController {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.getResponseCode();
             con.disconnect();
-        } catch (Exception ignore) {
+        } catch (Exception e) {
+            LOG.error("Connection exception!", e);
         }
     }
 }

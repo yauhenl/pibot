@@ -23,7 +23,7 @@ public class BotControl {
         return cascade;
     }
 
-    protected GpioController getController() {
+    private GpioController getController() {
         GpioUtil.enableNonPrivilegedAccess();
         return GpioFactory.getInstance();
     }

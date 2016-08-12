@@ -1,10 +1,10 @@
 package com.yauhenl.pibot.hardware.cascade;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.RaspiPin;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -16,7 +16,7 @@ public class BotCascade {
     private Shift shift;
 
     public void initCascade(GpioController controller) {
-        motors = new HashMap<>();
+        motors = new EnumMap<>(MotorKey.class);
         motors.put(MotorKey.DC1, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_25)));
         motors.put(MotorKey.DC2, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_22)));
         motors.put(MotorKey.DC3, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_24)));
