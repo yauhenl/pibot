@@ -3,13 +3,13 @@ plugins {
     id "org.hidetake.ssh" version "2.4.0"
 }
 
-group 'com.yauhenl'
-version '1.0-SNAPSHOT'
-
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/groups/public/"
+    }
 }
 
 remotes {
@@ -21,7 +21,7 @@ remotes {
 }
 
 dependencies {
-    compile 'com.pi4j:pi4j-core:1.0'
+    compile 'com.pi4j:pi4j-core:1.2-SNAPSHOT'
 }
 
 jar {
