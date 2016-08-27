@@ -12,29 +12,28 @@ import static com.pi4j.io.gpio.RaspiPin.*;
 public class TestGpio {
     private static final GpioController gpio = GpioFactory.getInstance();
 
-    private static final GpioPinDigitalOutput dc1 = gpio.provisionDigitalOutputPin(GPIO_25, LOW);
-    private static final GpioPinDigitalOutput dc2 = gpio.provisionDigitalOutputPin(GPIO_22, LOW);
+    private static final GpioPinPwmOutput dc1 = gpio.provisionPwmOutputPin(GPIO_26, 1000);
+    private static final GpioPinPwmOutput dc2 = gpio.provisionPwmOutputPin(GPIO_01, 1000);
     private static final GpioPinPwmOutput dc3 = gpio.provisionPwmOutputPin(GPIO_24, 1000);
-    private static final GpioPinDigitalOutput dc4 = gpio.provisionDigitalOutputPin(GPIO_23, LOW);
+    private static final GpioPinPwmOutput dc4 = gpio.provisionPwmOutputPin(GPIO_23, 1000);
 
-    private static final GpioPinDigitalOutput clk = gpio.provisionDigitalOutputPin(GPIO_26, LOW);
+    private static final GpioPinDigitalOutput clk = gpio.provisionDigitalOutputPin(GPIO_29, LOW);
     private static final GpioPinDigitalOutput ser = gpio.provisionDigitalOutputPin(GPIO_27, LOW);
     private static final GpioPinDigitalOutput latch = gpio.provisionDigitalOutputPin(GPIO_28, LOW);
 
     public static void main(String[] args) throws InterruptedException {
-        forward();
-        setPwm(1000);
-        Thread.sleep(2000);
-//        backward();
-//        setPwm(50);
-//        Thread.sleep(2000);
-//        forward();
-//        setPwm(75);
-//        Thread.sleep(2000);
-//        backward();
-//        setPwm(100);
-//        Thread.sleep(2000);
+        allHigh();
 
+        forward();
+        Thread.sleep(2000);
+        backward();
+        Thread.sleep(2000);
+        toRight();
+        Thread.sleep(2000);
+        toLeft();
+        Thread.sleep(2000);
+
+        allLow();
         stop();
         gpio.shutdown();
     }
@@ -60,13 +59,17 @@ public class TestGpio {
     }
 
     private static void allHigh() {
-        dc2.high();
-        dc4.high();
+        dc1.setPwm(1000);
+        dc2.setPwm(1000);
+        dc3.setPwm(1000);
+        dc4.setPwm(1000);
     }
 
     private static void allLow() {
-        dc2.low();
-        dc4.low();
+        dc1.setPwm(0);
+        dc2.setPwm(0);
+        dc3.setPwm(0);
+        dc4.setPwm(0);
     }
 
     private static void setPwm(int value) {
