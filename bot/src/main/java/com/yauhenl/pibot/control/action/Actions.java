@@ -1,5 +1,7 @@
 package com.yauhenl.pibot.control.action;
 
+import com.yauhenl.pibot.hardware.cascade.Motor;
+
 public class Actions {
     private static final int BACKWARD_SHIFT_VAL = 156;
     private static final int FORWARD_SHIFT_VAL = 99;
@@ -17,7 +19,7 @@ public class Actions {
 
     public static Action stopMovingAction = botControl -> botControl.getShift().writeShift(STOP_SHIFT_VAL);
 
-    public static Action allMotorsPowerOffAction = botControl -> botControl.getMotors().values().forEach(it -> it.setSpeed(0));
+    public static Action allMotorsPowerOffAction = botControl -> botControl.getMotors().values().forEach(Motor::setLowOutput);
 
-    public static Action allMotorsPowerOnAction = botControl -> botControl.getMotors().values().forEach(it -> it.setSpeed(1000));
+    public static Action allMotorsPowerOnAction = botControl -> botControl.getMotors().values().forEach(Motor::setHighOutput);
 }
