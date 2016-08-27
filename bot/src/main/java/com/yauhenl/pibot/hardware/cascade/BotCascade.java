@@ -17,12 +17,12 @@ public class BotCascade {
 
     public void initCascade(GpioController controller) {
         motors = new EnumMap<>(MotorKey.class);
-        motors.put(MotorKey.DC1, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_25)));
-        motors.put(MotorKey.DC2, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_22)));
-        motors.put(MotorKey.DC3, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_24)));
-        motors.put(MotorKey.DC4, new Motor(controller.provisionDigitalOutputPin(RaspiPin.GPIO_23)));
+        motors.put(MotorKey.DC1, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_26, 1000)));
+        motors.put(MotorKey.DC2, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_01, 1000)));
+        motors.put(MotorKey.DC3, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_24, 1000)));
+        motors.put(MotorKey.DC4, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_23, 1000)));
 
-        shift = new Shift(controller.provisionDigitalOutputPin(RaspiPin.GPIO_26),
+        shift = new Shift(controller.provisionDigitalOutputPin(RaspiPin.GPIO_29),
                 controller.provisionDigitalOutputPin(RaspiPin.GPIO_27),
                 controller.provisionDigitalOutputPin(RaspiPin.GPIO_28));
     }

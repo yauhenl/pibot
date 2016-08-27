@@ -1,23 +1,19 @@
 package com.yauhenl.pibot.hardware.cascade;
 
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.GpioPinPwmOutput;
 
 /**
  * Created by Stsiapan_Shablinski on 7/29/2016.
  */
 public class Motor {
 
-    private GpioPinDigitalOutput outputChannel;
+    private GpioPinPwmOutput outputChannel;
 
-    public Motor(GpioPinDigitalOutput outputChannel) {
+    public Motor(GpioPinPwmOutput outputChannel) {
         this.outputChannel = outputChannel;
     }
 
-    public void setHighOutput() {
-        outputChannel.high();
-    }
-
-    public void setLowOutput() {
-        outputChannel.low();
+    public void setSpeed(int value) {
+        outputChannel.setPwm(value);
     }
 }
