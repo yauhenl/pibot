@@ -4,7 +4,10 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+
+import static com.pi4j.io.gpio.PinState.LOW;
 
 
 /**
@@ -22,9 +25,9 @@ public class BotCascade {
         motors.put(MotorKey.DC3, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_24, 1000)));
         motors.put(MotorKey.DC4, new Motor(controller.provisionPwmOutputPin(RaspiPin.GPIO_23, 1000)));
 
-        shift = new Shift(controller.provisionDigitalOutputPin(RaspiPin.GPIO_29),
-                controller.provisionDigitalOutputPin(RaspiPin.GPIO_27),
-                controller.provisionDigitalOutputPin(RaspiPin.GPIO_28));
+        shift = new Shift(controller.provisionDigitalOutputPin(RaspiPin.GPIO_29, LOW),
+                controller.provisionDigitalOutputPin(RaspiPin.GPIO_27, LOW),
+                controller.provisionDigitalOutputPin(RaspiPin.GPIO_28, LOW));
     }
 
     public Map<MotorKey, Motor> getMotors() {
