@@ -17,7 +17,7 @@ public class Actions {
 
     public static Action stopMovingAction = botControl -> botControl.getShift().writeShift(STOP_SHIFT_VAL);
 
-    public static Action allMotorsPowerOffAction = botControl -> botControl.getMotors().forEach(it -> it.setSpeed(0));
+    public static Action allMotorsPowerOffAction = botControl -> botControl.getMotors().values().forEach(it -> it.setSpeed(0));
 
-    public static Action allMotorsPowerOnAction = botControl -> botControl.getMotors().forEach(it -> it.setSpeed(1000));
+    public static Action allMotorsPowerOnAction = botControl -> botControl.getMotors().values().forEach(it -> it.setSpeed(1000));
 }
