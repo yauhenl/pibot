@@ -18,7 +18,7 @@ public class BotControl {
 
     public BotControl() {
         cascade = new BotCascade();
-//        cascade.initCascade(GpioFactory.getInstance());
+        cascade.initCascade(GpioFactory.getInstance());
     }
 
     public Shift getShift() {
