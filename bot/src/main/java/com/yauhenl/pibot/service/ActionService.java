@@ -1,16 +1,17 @@
 package com.yauhenl.pibot.service;
 
 import com.yauhenl.pibot.control.action.ActionType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 /**
  * Created by Stsiapan_Shablinski on 7/28/2016.
  */
-@Service
+@Component
 public class ActionService {
 
-    @Autowired
+    @Inject
     private BotControl botControl;
 
     public void performAction(ActionType actionType) {
