@@ -1,3 +1,5 @@
 language: java
-script: ./gradlew clean build
+script:
+  - ./gradlew clean build
+  - jdk_switcher use oraclejdk8
 sudo: required
