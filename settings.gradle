@@ -1,3 +1,5 @@
 rootProject.name = 'pibot'
 include 'bot'
 include 'client'
+include 'simplebot'
+

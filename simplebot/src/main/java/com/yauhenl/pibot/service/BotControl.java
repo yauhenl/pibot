@@ -1,6 +1,5 @@
 package com.yauhenl.pibot.service;
 
-import com.pi4j.io.gpio.GpioFactory;
 import com.yauhenl.pibot.hardware.cascade.BotCascade;
 import com.yauhenl.pibot.hardware.cascade.Motor;
 import com.yauhenl.pibot.hardware.cascade.MotorKey;
