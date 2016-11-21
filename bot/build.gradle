@@ -6,6 +6,11 @@ buildscript {
 
 apply plugin: "org.hidetake.ssh"
 
+dependencies {
+    compile "com.pi4j:pi4j-core:${pi4jVersion}"
+    compile "org.glassfish.jersey.containers:jersey-container-jdk-http:2.23.2"
+}
+
 remotes {
     pi {
         host = '192.168.1.7'
@@ -14,15 +19,12 @@ remotes {
     }
 }
 
-dependencies {
-    compile "com.pi4j:pi4j-core:${pi4jVersion}"
-    compile "org.glassfish.jersey.containers:jersey-container-jdk-http:2.23.2"
-}
-
-task deploy << {
-    ssh.run {
-        session(remotes.pi) {
-            put from: 'bot/build/libs/bot.jar', into: 'pibot.jar'
+task deploy {
+    doLast {
+        ssh.run {
+            session(remotes.pi) {
+                put from: 'bot/build/libs/bot.jar', into: 'pibot.jar'
+            }
         }
     }
 }
