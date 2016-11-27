@@ -4,6 +4,7 @@ subprojects {
             springBootVersion = '1.4.2.RELEASE'
             sshPluginVersion = '2.7.0'
             pi4jVersion = '1.2-SNAPSHOT'
+            kotlin_version = '1.0.5-2'
         }
         repositories {
             mavenCentral()
@@ -13,17 +14,10 @@ subprojects {
         }
     }
 
-    apply plugin: 'java'
-    sourceCompatibility = 1.8
-
     repositories {
         mavenCentral()
         maven {
             url "https://oss.sonatype.org/content/groups/public/"
         }
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.2'
 }
