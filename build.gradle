@@ -2,7 +2,7 @@ subprojects {
     buildscript {
         ext {
             springBootVersion = '1.5.3.RELEASE'
-            sshPluginVersion = '2.7.0'
+            sshPluginVersion = '2.9.0'
             pi4jVersion = '1.2-SNAPSHOT'
             kotlin_version = '1.1.2'
         }
