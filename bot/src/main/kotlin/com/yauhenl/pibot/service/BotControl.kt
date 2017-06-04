@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service
 @Service
 class BotControl private constructor() {
 
-    private val cascade: BotCascade
+    private val cascade: BotCascade = BotCascade()
 
     init {
-        cascade = BotCascade()
         cascade.initCascade(GpioFactory.getInstance())
     }
 
