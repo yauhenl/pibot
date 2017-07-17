@@ -6,13 +6,12 @@ import com.pi4j.io.gpio.RaspiPin.*
 import com.yauhenl.pibot.hardware.MotorKey.*
 import java.util.*
 
-class BotCascade {
+class BotCascade(controller: GpioController) {
 
     var motors: EnumMap<MotorKey, Motor> = EnumMap<MotorKey, Motor>(MotorKey::class.java)
-    var shiftRegister: ShiftRegister? = null
+    var shiftRegister: ShiftRegister
 
-    fun initCascade(controller: GpioController) {
-        motors = EnumMap<MotorKey, Motor>(MotorKey::class.java)
+    init {
         motors.put(DC1, Motor(controller.provisionDigitalOutputPin(GPIO_25, LOW)))
         motors.put(DC2, Motor(controller.provisionDigitalOutputPin(GPIO_22, LOW)))
         motors.put(DC3, Motor(controller.provisionDigitalOutputPin(GPIO_24, LOW)))

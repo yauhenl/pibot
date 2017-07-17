@@ -10,13 +10,9 @@ import org.springframework.stereotype.Service
 @Service
 class BotControl {
 
-    private val cascade: BotCascade = BotCascade()
+    private val cascade: BotCascade = BotCascade(GpioFactory.getInstance())
 
-    init {
-        cascade.initCascade(GpioFactory.getInstance())
-    }
-
-    val shiftRegister: ShiftRegister = cascade.shiftRegister!!
+    val shiftRegister: ShiftRegister = cascade.shiftRegister
 
     val motors: Map<MotorKey, Motor> = cascade.motors
 }
