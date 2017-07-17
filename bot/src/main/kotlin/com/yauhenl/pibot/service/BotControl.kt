@@ -8,7 +8,7 @@ import com.yauhenl.pibot.hardware.ShiftRegister
 import org.springframework.stereotype.Service
 
 @Service
-class BotControl private constructor() {
+class BotControl {
 
     private val cascade: BotCascade = BotCascade()
 
@@ -18,5 +18,5 @@ class BotControl private constructor() {
 
     val shiftRegister: ShiftRegister = cascade.shiftRegister!!
 
-    val motors: Map<MotorKey, Motor> = cascade.motors!!
+    val motors: Map<MotorKey, Motor> = cascade.motors
 }

@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 
 @Controller
-class IndexController {
+class IndexController() {
 
     @Autowired
-    private val actionService: ActionService? = null
+    lateinit var actionService: ActionService
 
     @GetMapping("/action/{actionName}")
-    fun performAction(@PathVariable("actionName") actionName: String) = actionService?.performAction(ActionType.valueOf(actionName))
+    fun performAction(@PathVariable actionName: String) = actionService.performAction(ActionType.valueOf(actionName))
 }

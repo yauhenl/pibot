@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class ActionService {
 
     @Autowired
-    private val botControl: BotControl? = null
+    lateinit var botControl: BotControl
 
-    fun performAction(actionType: ActionType) = actionType.action.invoke(botControl!!)
+    fun performAction(actionType: ActionType) = actionType.action.invoke(botControl)
 }
